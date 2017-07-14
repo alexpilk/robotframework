@@ -81,7 +81,7 @@ class RowSplitter(object):
         index = min(self._get_possible_split_indices(data))
         current, rest = data[:index], data[index:]
         rest = self._comment_rest_if_needed(current, rest)
-        return current, rest
+        return current + rest, ""
 
     def _get_possible_split_indices(self, data):
         min_index = self._get_first_non_empty_index(data, indented=True) + 1

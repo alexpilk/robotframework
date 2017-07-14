@@ -35,7 +35,7 @@ READERS = {'html': HtmlReader, 'htm': HtmlReader, 'xhtml': HtmlReader,
            'txt': TxtReader, 'robot': TxtReader}
 
 # Hook for external tools for altering ${CURDIR} processing
-PROCESS_CURDIR = True
+PROCESS_CURDIR = False
 
 
 class FromFilePopulator(object):

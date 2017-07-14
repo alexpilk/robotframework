@@ -55,10 +55,11 @@ def _prune_excess_lines(lines, lengths, from_end=False):
     return ret
 
 def _cut_long_line(line, used, from_end):
+    print("Cutting line: "+line)
     available_lines = _MAX_ERROR_LINES // 2 - used
     available_chars = available_lines * _MAX_ERROR_LINE_LENGTH - 3
     if len(line) > available_chars:
-        if not from_end:
+        if not from_end and '#' not in line:
             line = line[:available_chars] + '...'
         else:
             line = '...' + line[-available_chars:]
