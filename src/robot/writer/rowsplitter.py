@@ -97,8 +97,17 @@ class RowSplitter(object):
         return rest
 
     def _escape_last_cell_if_empty(self, row):
-        if row and not row[-1].strip():
-            row = row[:-1] + [self._empty_cell_escape]
+        empty_cell_index = len(row)-1
+        for i in range(len(row)-1, -1, -1):
+            if self._comment_mark in row[i]:
+                empty_cell_index -= 1
+            elif not row[i]:
+                if row and not row[empty_cell_index].strip():
+                    # if empty_cell_index == len(row)-1:
+                    #     row = row[:empty_cell_index] + [self._empty_cell_escape]
+                    # else:
+                    row = row[:empty_cell_index] + [self._empty_cell_escape] + row[empty_cell_index + 1:]
+
         return row
 
     def _continue_row(self, row, indent):
