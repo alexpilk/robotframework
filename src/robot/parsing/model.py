@@ -152,7 +152,8 @@ class TestCaseFile(_TestData):
 
     def _validate(self):
         if not self.testcase_table.is_started():
-            raise DataError('File has no test case table.')
+            pass
+            #raise DataError('File has no test case table.')
 
     def _table_is_allowed(self, table):
         return True
